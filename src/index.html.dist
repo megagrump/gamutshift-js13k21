@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<style type="text/css">
+   body { background: #000; color: #aaa; font-family: sans-serif; }
+   #p { display: none; font-size: 2em; }
+</style>
+<title>COLORSPACE</title>
+<body>
+<center>
+	<p id="l">Loading...</p><button id="p">Start game</button>
+	<canvas id="c" width="800" height="600"></canvas>
+</center>
+<script>//<![CDATA[
+@MAIN@
+
+//]]></script>
