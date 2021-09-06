@@ -160,6 +160,10 @@ const renderAO = () => {
 	gl.viewport(0, 0, resX * BLURSCALE, resY * BLURSCALE)
 
 	aoBuffer.bind()
+	gl.clearColor(255, 0, 0, 255)
+	gl.clear(gl.COLOR_BUFFER_BIT)
+	gl.enable(gl.SCISSOR_TEST)
+	gl.scissor(2, 2, resX * BLURSCALE - 4, resY * BLURSCALE - 4)
 
 	gl.useProgram(shaders.ao)
 	gl.uniform1i(gl.getUniformLocation(shaders.ao, 'tex'), 0)
@@ -167,6 +171,8 @@ const renderAO = () => {
 	gl.activeTexture(gl.TEXTURE0)
 	gl.bindTexture(gl.TEXTURE_2D, fgBuffer.textures[0])
 	screenQuad()
+
+	gl.disable(gl.SCISSOR_TEST)
 
 	gl.useProgram(shaders.blur)
 	for(let i = 0; i < 3; ++i) {
