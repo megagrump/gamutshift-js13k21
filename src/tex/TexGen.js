@@ -35,7 +35,7 @@ const TILETEXTURES = [
 	textures.portal(26),
 	textures.sphere('#fff', 30), // player
 	textures.checkerBoard('#fc3', '#421'), // player
-	textures.bricks('#aac', '#ddd', '#fff3', 0, 0, 31, 31, 1, 0, 100), // floor
+	textures.bricks('#bbd', '#eee', '#fff3', 0, 0, 31, 31, 1, 0, 200), // floor
 	textures.wood('#fed'), // floor
 	textures.bricks('#333', '#444', '#fff3', .7, .01, 30, 14, 2, 16, 8), // wall
 	textures.crate('#d72', 1),
@@ -49,7 +49,7 @@ const TILETEXTURES = [
 	textures.bricks('#ccc', '#777', '#fff2', .07, .1, 60, 60, 2, 0, 20), // floor
 	textures.bricks('#ccf', '#ccf', '#fffb', .47, .1, 64, 64, 0, 0, 20), // floor
 	textures.panel('#a64', '#fff3', false), // wall
-	textures.bricks('#2cf', '#567', '#aaa3', 0, 0, 3, 3, 1, 2, 30), // floor
+	textures.bricks('#5df', '#567', '#aaa2', .5, .2, 3, 3, 1, 2, 30, .5), // floor
 	textures.metalCrate(),
 	textures.roundedTile(), // floor
 ]

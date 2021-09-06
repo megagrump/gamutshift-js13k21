@@ -67,7 +67,7 @@ uniform sampler2D tex;
 uniform vec2 dir;
 
 void main() {
-	col = .113 * (texture(tex, uv) +
+	col = .114 * (texture(tex, uv) +
 		texture(tex, vec2(uv - 4. * dir)) +
 		texture(tex, vec2(uv - 3. * dir)) +
 		texture(tex, vec2(uv - 2. * dir)) +
@@ -105,14 +105,15 @@ flat in vec4 pos;
 flat in vec3 lc;
 uniform sampler2D tex, normals;
 
-vec3 bump(vec3 t, vec3 normal, float h) {
+vec3 light(vec3 t, vec3 normal, float se) {
 	vec3 ld = vec3(pos.xy - gl_FragCoord.xy, pos.z);
+	float dn = max(dot(normal, normalize(ld)), 0.);
+
 	float a = max(0., 1. - (length(ld) / pos.w));
 	a *= a;
 
-	float dn = max(dot(normal, normalize(ld)), 0.);
 	vec3 d = lc * dn * a;
-	vec3 s = lc * pow(dn, .5 + h * 128.) * a;
+	vec3 s = lc * pow(dn, .5 + se * 128.) * a;
 
 	return t * d + s;
 }
@@ -122,7 +123,7 @@ void main() {
 	vec4 n = texture(normals, uv);
 	n.xy = n.xy * 2. - 1.;
 	vec3 normal = normalize(vec3(n.xy, sqrt(1. - dot(n.xy, n.xy))));
-	col = vec4(bump(t.rgb, normal, n.z), 1.);
+	col = vec4(light(t.rgb, normal, n.z), 1.);
 }
 `
 
@@ -136,7 +137,7 @@ void main() {
 	vec4 n = texture(normals, uv);
 	n.xy = n.xy * 2. - 1.;
 	vec3 normal = normalize(vec3(n.xy, sqrt(1. - dot(n.xy, n.xy))));
-	col = vec4(vec3(.2, .15, .15) * t.rgb * max(dot(normal, vec3(-.5, -.5, .7)), 0.), t.a);
+	col = vec4(vec3(.2, .175, .15) * t.rgb * max(dot(normal, vec3(.5, -.5, .7)), 0.), t.a);
 }
 `
 
