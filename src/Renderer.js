@@ -65,7 +65,6 @@ const createShader = (vert, frag) => {
 		gl.shaderSource(shader, s[0])
 		gl.compileShader(shader)
 		gl.attachShader(program, shader)
-	  	console.log(gl.getShaderInfoLog(shader)) // TODO: remove
 	})
 
 	gl.linkProgram(program)
