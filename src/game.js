@@ -11,7 +11,6 @@ catch(e) { }
 
 const MOVEDIRS = [[0, 0], [0, 1], [0, -1], [1, 0], [-1, 0]]
 
-
 const game = {
 	level: startLevel,
 	time: 0,
@@ -30,6 +29,11 @@ const game = {
 	switchState: (state, ...args) => {
 		state.start(...args)
 		game.state = state
+	},
+
+	start: () => {
+		game.loadLevel()
+		game.audio.music()
 	},
 
 	loadLevel: (level = game.level) => {
@@ -74,21 +78,6 @@ const game = {
 	},
 
 	states: {
-		load: (() => {
-			return {
-				start: () => {
-					document.getElementById('p').onclick = (evt) => {
-						evt.target.remove()
-						document.getElementById('l').innerText = "Move with ARROW keys - SPACE to rewind - R to restart level"
-						game.loadLevel()
-						game.audio.music()
-					}
-				},
-
-				step: () => 0
-			}
-		})(),
-
 		enter: (() => {
 			let time = 0
 

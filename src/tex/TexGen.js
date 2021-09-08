@@ -45,7 +45,7 @@ const TILETEXTURES = [
 	textures.panel('#46b', '#0007', true), // wall
 	textures.crate('#820', 2),
 	textures.bricks('#fa7', '#e86', '#fff4', .07, .2, 30, 30, 2, 16, 200, 2), // wall
-	textures.bricks('#459', '#222', '#fff3', .7, .01, 15, 15, 1, 7, 32, 2), // wall
+	textures.bricks('#543', '#333', '#fff3', .7, .05, 13, 13, 3, 7, 20), // wall
 	textures.bricks('#ccc', '#777', '#fff2', .07, .1, 60, 60, 2, 0, 20), // floor
 	textures.bricks('#ccf', '#ccf', '#fffb', .47, .1, 64, 64, 0, 0, 20), // floor
 	textures.panel('#a64', '#fff3', false), // wall

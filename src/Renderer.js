@@ -315,7 +315,6 @@ const render = (world, cam, shader, uniforms) => {
 
 	gl.activeTexture(gl.TEXTURE0)
 	gl.bindTexture(gl.TEXTURE_2D, renderBuffer.textures[0])
-	//gl.bindTexture(gl.TEXTURE_2D, aoBuffer.textures[0])
 
 	screenQuad()
 }
