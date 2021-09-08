@@ -1,6 +1,9 @@
-.PHONY: test clean bundle
+.PHONY: test clean bundle install
 
 default: test
+
+install:
+	npm install webpack terser-webpack-plugin
 
 test:
 	firefox --new-window http://localhost:8000
