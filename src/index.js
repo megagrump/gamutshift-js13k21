@@ -35,7 +35,7 @@ const init = () => {
 				game.rewind()
 			} else if(event.key == 'r') {
 				game.loadLevel()
-			} else if(event.key == 'n') { // TODO: remove
+			} else if(event.key == 'n' && window.lemmecheat) {
 				game.nextLevel()
 			}
 		})
