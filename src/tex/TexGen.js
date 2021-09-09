@@ -21,7 +21,7 @@ const TILETEXTURES = [
 	textures.sphere('#4ff', 26), // C
 	textures.sphere('#f4f', 26), // M
 	textures.sphere('#fff', 26), // W
-	textures.bricks('#fff', '#fff', '#888', 0, 0, 0, 0, 63.5, 63.5, .5, 0, 255), // floor
+	textures.bricks('#fff', '#fff', '#888', 3, 3, 0, 0, 63.5, 63.5, .5, 0, 255), // floor
 	textures.bricks('#a55', '#aaa', '#fff8', 3, 3, .8, .5, 30, 14, 2, 16, 40, 1), // wall
 	textures.nil(),
 	textures.plate('#f44', 22), // r
