@@ -17,8 +17,8 @@ export default (src, strength, spec) => {
 			const l = Math.sqrt(vx * vx + vy * vy + 1)
 
 			let p = y * 256 + x * 4
-			res[p++] = (.5 + .5 * (vx / l)) * 255
-			res[p++] = (.5 + .5 * (vy / l)) * 255
+			res[p++] = Math.round((.5 + .5 * (vx / l)) * 255)
+			res[p++] = Math.round((.5 + .5 * (vy / l)) * 255)
 			res[p++] = spec
 		}
 	}

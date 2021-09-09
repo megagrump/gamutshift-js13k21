@@ -44,7 +44,7 @@ uniform sampler2DArray tex, normals;
 
 void main() {
 	col = texture(tex, uv);
-	norm = vec4(texture(normals, uv).rgb * col.a, col.a);
+	norm = vec4(texture(normals, uv).rgb, step(.7, col.a));
 }
 `
 

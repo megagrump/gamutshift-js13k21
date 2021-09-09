@@ -198,7 +198,7 @@ const renderAO = () => {
 }
 
 const render = (world, cam, shader, uniforms) => {
-	gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
+	gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 	gl.viewport(0, 0, resX, resY)
 	gl.clearColor(0, 0, 0, 0)
 	gl.clear(gl.COLOR_BUFFER_BIT)
@@ -280,7 +280,7 @@ const render = (world, cam, shader, uniforms) => {
 	gl.drawArraysInstanced(gl.TRIANGLE_FAN, 0, 30, lightGeom.numInstances)
 
 	// screen
-	gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
+	gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 	gl.drawBuffers([])
 	gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER, null)
 
