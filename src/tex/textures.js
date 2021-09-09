@@ -59,11 +59,11 @@ const wood = (color) => [
 	50
 ]
 
-const bricks = (color, gapColor, emboss, noiseFreq, noiseStrength, width, height, gap, shift, spec = 20, depth = 1) => {
+const bricks = (color, gapColor, emboss, rx, ry, noiseFreq, noiseStrength, width, height, gap, shift, spec = 20, depth = 1) => {
 	let cbricks = `<g id="c">`, hbricks = `<g id="h">`
 	for(let x = gap / 2; x < 64 + width + gap; x += width + gap) {
-		cbricks += rect(x, gap / 2, width, height, color)
-		hbricks += rect(x, gap / 2, width, height, emboss)
+		cbricks += rect(x, gap / 2, width, height, color, `rx="${rx}" ry="${ry}"`)
+		hbricks += rect(x, gap / 2, width, height, emboss, `rx="${rx}" ry="${ry}"`)
 	}
 	cbricks += '</g>'
 	hbricks += '</g>'
@@ -252,34 +252,32 @@ const metalCrate = () => {
 	]
 }
 
-const roundedTile = () => {
-	return [
-		svg(
-			rect(0, 0, 64, 64, '#bdf') +
-			rect(2, 2, 60, 60, '#fff',  'rx="8" ry="8"') +
-			circle( 8,  8,  2, '#bdf') +
-			circle( 8, 56,  2, '#bdf') +
-			circle(56,  8,  2, '#bdf') +
-			circle(56, 56,  2, '#bdf')
-		),
-		svg(
-			rect(0, 0, 64, 64, '#888') +
-			rect(2, 2, 60, 60, '#aaa', 'rx="8" ry="8"') +
-			rect(3, 3, 58, 58, '#bbb', 'rx="8" ry="8"') +
-			circle( 8,  8,  2, '#999') +
-			circle( 8, 56,  2, '#999') +
-			circle(56,  8,  2, '#999') +
-			circle(56, 56,  2, '#999') +
-			circle( 0,  0,  3, '#666') +
-			circle( 0, 64,  3, '#666') +
-			circle(64,  0,  3, '#666') +
-			circle(64, 64,  3, '#666') +
-			scratches()
-		),
-		1,
-		255
-	]
-}
+const roundedTile = () => [
+	svg(
+		rect(0, 0, 64, 64, '#bdf') +
+		rect(2, 2, 60, 60, '#fff',  'rx="8" ry="8"') +
+		circle( 8,  8,  2, '#bdf') +
+		circle( 8, 56,  2, '#bdf') +
+		circle(56,  8,  2, '#bdf') +
+		circle(56, 56,  2, '#bdf')
+	),
+	svg(
+		rect(0, 0, 64, 64, '#888') +
+		rect(2, 2, 60, 60, '#aaa', 'rx="8" ry="8"') +
+		rect(3, 3, 58, 58, '#bbb', 'rx="8" ry="8"') +
+		circle( 8,  8,  2, '#999') +
+		circle( 8, 56,  2, '#999') +
+		circle(56,  8,  2, '#999') +
+		circle(56, 56,  2, '#999') +
+		circle( 0,  0,  3, '#666') +
+		circle( 0, 64,  3, '#666') +
+		circle(64,  0,  3, '#666') +
+		circle(64, 64,  3, '#666') +
+		scratches()
+	),
+	1,
+	255
+]
 
 export default {
 	sphere,
