@@ -14,53 +14,54 @@ const frame = (t) => {
 		requestAnimationFrame(frame)
 }
 
-const init = () => {
-	const addEventListeners = () => {
-		window.addEventListener('blur', (event) => {
-			focus = false
-		})
+const addEventListeners = () => {
+	window.addEventListener('blur', (event) => {
+		focus = false
+	})
 
-		window.addEventListener('focus', (event) => {
-			if(!focus)
-				requestAnimationFrame(frame)
-			focus = true
-		})
+	window.addEventListener('focus', (event) => {
+		if(!focus)
+			requestAnimationFrame(frame)
+		focus = true
+	})
 
-		document.addEventListener('keydown', (event) => {
-			game.keyState.down  = game.keyState.down  || event.code == 'ArrowDown'  || event.code == 'KeyS'
-			game.keyState.up    = game.keyState.up    || event.code == 'ArrowUp'    || event.code == 'KeyW'
-			game.keyState.left  = game.keyState.left  || event.code == 'ArrowLeft'  || event.code == 'KeyA'
-			game.keyState.right = game.keyState.right || event.code == 'ArrowRight' || event.code == 'KeyD'
-			if(event.key == ' ') {
-				game.rewind()
-			} else if(event.key == 'r') {
-				game.loadLevel()
-			} else if(event.key == 'n' && window.lemmecheat) {
-				game.nextLevel()
-			}
-		})
+	document.addEventListener('keydown', (event) => {
+		game.keyState.down  = game.keyState.down  || event.code == 'ArrowDown'  || event.code == 'KeyS'
+		game.keyState.up    = game.keyState.up    || event.code == 'ArrowUp'    || event.code == 'KeyW'
+		game.keyState.left  = game.keyState.left  || event.code == 'ArrowLeft'  || event.code == 'KeyA'
+		game.keyState.right = game.keyState.right || event.code == 'ArrowRight' || event.code == 'KeyD'
+		if(event.key == ' ') {
+			game.rewind()
+		} else if(event.key == 'r') {
+			game.loadLevel()
+		} else if(event.key == 'n' && window.lemmecheat) {
+			game.nextLevel()
+		}
+	})
 
-		document.addEventListener('keyup', (event) => {
-			game.keyState.down  = game.keyState.down  && !(event.code == 'ArrowDown'  || event.code == 'KeyS')
-			game.keyState.up    = game.keyState.up    && !(event.code == 'ArrowUp'    || event.code == 'KeyW')
-			game.keyState.left  = game.keyState.left  && !(event.code == 'ArrowLeft'  || event.code == 'KeyA')
-			game.keyState.right = game.keyState.right && !(event.code == 'ArrowRight' || event.code == 'KeyD')
-		})
-	}
+	document.addEventListener('keyup', (event) => {
+		game.keyState.down  = game.keyState.down  && !(event.code == 'ArrowDown'  || event.code == 'KeyS')
+		game.keyState.up    = game.keyState.up    && !(event.code == 'ArrowUp'    || event.code == 'KeyW')
+		game.keyState.left  = game.keyState.left  && !(event.code == 'ArrowLeft'  || event.code == 'KeyA')
+		game.keyState.right = game.keyState.right && !(event.code == 'ArrowRight' || event.code == 'KeyD')
+	})
+}
 
-	genTextures().then(([diffuse, normals]) => {
-		genAudio(game.audio).then(() => {
-			document.getElementById('l').innerText = "Move with ARROW keys - SPACE rewinds - R restarts level"
+genTextures().then(([diffuse, normals]) => {
+	genAudio(game.audio).then(() => {
+		const txt = document.getElementById('l')
+		const btn = document.getElementById('p')
+		txt.style.display = 'none'
+		btn.style.display = 'block'
+		btn.onclick = (evt) => {
+			evt.target.remove()
+			txt.style.display = 'block'
+			txt.innerText = "Move with ARROW keys - SPACE rewinds - R restarts level"
 			game.renderer.setTileTextures(diffuse, normals)
 			game.start()
 			addEventListeners()
 			requestAnimationFrame(frame)
-		})
+		}
 	})
-}
+})
 
-document.getElementById('p').onclick = (evt) => {
-	evt.target.remove()
-	document.getElementById('l').style.display = 'block'
-	init()
-}
