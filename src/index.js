@@ -103,19 +103,40 @@ const addEventListeners = () => {
 }
 
 genTextures().then(([diffuse, normals]) => {
+	game.renderer.setTileTextures(diffuse, normals)
+
 	genAudio(game.audio).then(() => {
-		const txt = document.getElementById('l')
-		const btn = document.getElementById('p')
+		let hasSave = false
+		try {
+			hasSave = window.localStorage.getItem('ColorSpace-save') > 1
+		}
+		catch(e) { }
+
+		const txt = document.getElementById('load')
+		const play = document.getElementById('play')
+		const cont = document.getElementById('cont')
+		document.getElementById('loud').style.display = 'block'
+
 		txt.style.display = 'none'
-		btn.style.display = 'block'
-		btn.onclick = (evt) => {
-			evt.target.remove()
+		play.style.display = 'block'
+		cont.style.display = hasSave ? 'block' : 'none'
+
+		const startGame = () => {
+			document.getElementById('title').style.display = 'none'
 			txt.style.display = 'block'
 			txt.innerText = "Move with ARROW keys - SPACE rewinds - R restarts level"
-			game.renderer.setTileTextures(diffuse, normals)
 			game.start()
 			addEventListeners()
 			requestAnimationFrame(frame)
+		}
+
+		cont.onclick = startGame
+		play.onclick = () => {
+			try {
+				window.localStorage.setItem('ColorSpace-save', 1)
+			}
+			catch(e) { }
+			startGame()
 		}
 	})
 })

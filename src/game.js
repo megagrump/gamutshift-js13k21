@@ -3,16 +3,10 @@ import Camera from './Camera.js'
 import World from './World.js'
 import LEVELS from './LEVELS.js'
 
-let startLevel = 1
-try {
-	startLevel = parseInt(window.localStorage.getItem('ColorSpace-save') || 1)
-}
-catch(e) { }
-
 const MOVEDIRS = [[0, 0], [0, 1], [0, -1], [1, 0], [-1, 0]]
 
 const game = {
-	level: startLevel,
+	level: 1,
 	time: 0,
 	world: null,
 	camera: null,
@@ -32,6 +26,10 @@ const game = {
 	},
 
 	start: () => {
+		try {
+			game.level = parseInt(window.localStorage.getItem('ColorSpace-save') || 1)
+		}
+		catch(e) { }
 		game.loadLevel()
 		game.audio.music()
 	},

@@ -3,15 +3,31 @@
 <head>
 <meta charset="utf-8" />
 <style type="text/css">
-   body { background: #000; color: #aaa; font-family: sans-serif; }
-   #p { font-size: 2em; display: none; }
-   #l { display: block; }
+	@keyframes frames {
+		0% { text-shadow: 0 0 10px #f88; }
+		33% { text-shadow: 0 0 10px #8f8; }
+		66% { text-shadow: 0 0 10px #88f; }
+		100% { text-shadow: 0 0 10px #f8f; }
+	}
+	body { background: #000; color: #aaa; font-family: sans-serif; }
+	button { font-size: 200%; display: none; margin: .5em; padding: 0 1em; background: #000; color: #89a; border: none; border-bottom: 3px solid #456; }
+	button:hover { color: #fff; text-shadow: 0 0 12px #fff; }
+	#title { font-size: 12pt; }
+	#logo { color: #111; font-size: 400%; animation: frames 5s ease-in-out infinite; }
+	#load { display: block; }
+	#loud { display: none; }
 </style>
 <title>COLORSPACE</title>
 </head>
 <body>
 <center>
-	<p id="l">Loading...</p><button id="p">Start game</button>
+	<div id="title">
+		<p id="logo">COLORSPACE</p>
+		<button id="cont">Continue</button>
+		<button id="play">Start new game</button>
+		<p id="loud">(loud audio ahead)</p>
+	</div>
+	<p id="load">Loading...</p>
 	<canvas id="c" width="800" height="600"></canvas>
 </center>
 <script>//<![CDATA[
