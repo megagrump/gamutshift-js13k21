@@ -16,8 +16,11 @@ const nil = () => [ svg(''), svg('') ]
 
 const scratches = (count = 30, depth = '04') => {
 	let scr = ''
-	for(let i = 0; i < count; ++i)
-		scr += line(Math.random() * 64, 0, Math.random() * 64, 64, '#000000' + depth)
+	for(let i = 0; i < count; ++i) {
+		scr += (i & 1 == 0) ?
+			line(Math.random() * 64, 0, Math.random() * 64, 64, '#000000' + depth)
+			: line(0, Math.random() * 64, 64, Math.random() * 64, '#000000' + depth)
+	}
 	return scr
 }
 

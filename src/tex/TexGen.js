@@ -49,7 +49,7 @@ const TILETEXTURES = [
 	textures.bricks('#ccc', '#777', '#fff2', 0, 0, .07, .1, 60, 60, 2, 0, 20), // floor
 	textures.bricks('#ccf', '#ccf', '#fffb', 0, 0, .47, .1, 64, 64, 0, 0, 20), // floor
 	textures.panel('#a64', '#fff3', false), // wall
-	textures.bricks('#5df', '#567', '#aaa2', 0, 0, .5, .2, 3, 3, 1, 2, 30, .5), // floor
+	textures.bricks('#5df', '#567', '#aaa2', 0, 0, 0, 0, 3, 3, 1, 2, 30, .5), // floor
 	textures.metalCrate(),
 	textures.roundedTile(), // floor
 ]
