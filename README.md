@@ -1,4 +1,4 @@
-# COLORSPACE
+# GAMUT SHIFT
 
 My [JS13k 2021](https://js13kgames.com) entry.
 
