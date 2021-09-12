@@ -108,7 +108,7 @@ genTextures().then(([diffuse, normals]) => {
 	genAudio(game.audio).then(() => {
 		let hasSave = false
 		try {
-			hasSave = window.localStorage.getItem('ColorSpace-save') > 1
+			hasSave = window.localStorage.getItem('GamutShift-save') > 1
 		}
 		catch(e) { }
 
@@ -133,7 +133,7 @@ genTextures().then(([diffuse, normals]) => {
 		cont.onclick = startGame
 		play.onclick = () => {
 			try {
-				window.localStorage.setItem('ColorSpace-save', 1)
+				window.localStorage.setItem('GamutShift-save', 1)
 			}
 			catch(e) { }
 			startGame()

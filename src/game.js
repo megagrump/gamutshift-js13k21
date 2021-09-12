@@ -27,7 +27,7 @@ const game = {
 
 	start: () => {
 		try {
-			game.level = parseInt(window.localStorage.getItem('ColorSpace-save') || 1)
+			game.level = parseInt(window.localStorage.getItem('GamutShift-save') || 1)
 		}
 		catch(e) { }
 		game.loadLevel()
@@ -42,7 +42,7 @@ const game = {
 		game.renderer.reset(game.world)
 		game.switchState(game.states.enter)
 		try {
-			window.localStorage.setItem('ColorSpace-save', level)
+			window.localStorage.setItem('GamutShift-save', level)
 		}
 		catch(e) { }
 	},
